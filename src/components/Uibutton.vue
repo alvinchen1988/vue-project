@@ -1,5 +1,6 @@
 <template>
-    <button :class="{'active': selected}">{{text}}></button>
+    <button :class="{'active': selected}"
+    @click="$emit('click', text)">{{text}}></button>
 </template>
 
 <script>

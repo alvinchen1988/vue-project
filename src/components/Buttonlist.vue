@@ -4,8 +4,8 @@
 
     <div v-for="(button, index) in buttonDescriptions">
       <uibutton :text="button.amount"
-      :selected="button.selected"
-      @click.native="$emit('select', index)">
+      :selected="index === selectedIndex"
+      @click="selectButton($event, index)">
       </uibutton>
     </div>
 
@@ -28,33 +28,37 @@ export default {
   //   console.log(this.$refs.buttons)
   // },
 
-  // data () {
-  //   return {
-  //     selected: undefined
-  //   }
-  // },
-  // methods: {
-  //   resetSelected: function(index, element){
+  data () {
+    return {
+      selectedIndex: undefined
+    }
+  },
+  methods: {
+    selectButton (text, index) {
+      this.selectedIndex = index
+      this.$emit('select', text)
+    }
+    // resetSelected: function(index, element){
 
-  //     var text = element.innerText;
+    //   var text = element.innerText;
 
-  //     this.buttonDescriptions.forEach(function(description){
-  //         if(description.amount === description){
-  //           this.selected = description;
-  //         }
-  //     });
+    //   this.buttonDescriptions.forEach(function(description){
+    //       if(description.amount === description){
+    //         this.selected = description;
+    //       }
+    //   });
 
-  //     // if (this.selected) {
-  //     //   this.$refs.buttons[this.selected].classList.remove('active')
-  //     // }
-  //     // console.log(element)
-  //     // element.classList.add('active')
-  //     // this.selected = index
-  //     //this.$refs.buttons[index].classList.add('active')
-  //     //this.selected
-  //   }
+    //   // if (this.selected) {
+    //   //   this.$refs.buttons[this.selected].classList.remove('active')
+    //   // }
+    //   // console.log(element)
+    //   // element.classList.add('active')
+    //   // this.selected = index
+    //   //this.$refs.buttons[index].classList.add('active')
+    //   //this.selected
+    // }
 
-  // },
+  },
   // computed: {
 
   //   buttons: function(){

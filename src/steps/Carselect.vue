@@ -4,7 +4,7 @@
       <buttonlist :buttonDescriptions="monthlyBudgets"
       @select="setSelected($event)">
       </buttonlist>
-      <p v-if="selected">{{ selected.amount }}</p>
+      <p v-if="selected">{{ selected }}</p>
   </div>
 </template>
 
@@ -39,16 +39,17 @@ export default {
   },
   methods: {
     // Set the selected button
-    setSelected (index) {
+    setSelected (text) {
+      this.selected = text
       // Check if something is already selected
-      if (this.selected) {
-        this.selected.selected = false
-      }
+      // if (this.selected) {
+      //   this.selected.selected = false
+      // }
 
-      // use $set because 'selected' may not be tracked by Vue yet
-      // equivilent to: this.monthlyBudgets[index].selected = true
-      this.$set(this.monthlyBudgets[index], 'selected', true)
-      this.selected = this.monthlyBudgets[index]
+      // // use $set because 'selected' may not be tracked by Vue yet
+      // // equivilent to: this.monthlyBudgets[index].selected = true
+      // this.$set(this.monthlyBudgets[index], 'selected', true)
+      // this.selected = this.monthlyBudgets[index]
     }
   },
   computed: {
