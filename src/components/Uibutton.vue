@@ -1,28 +1,27 @@
 <template>
-    {{ selected }}
-    <button @click=toggleStatus>{{text}}></button>
-
+    <button :class="{'active': selected}">{{text}}></button>
 </template>
 
 <script>
 export default {
   name: 'uibutton',
   props: ['text', 'selected'],
-  data () {
-    return {
-    }
-  },
-  methods: {
-    toggleStatus: function () {
-      this.$emit('resetButton', this.$el)
-      // this.$nextTick(() => {
-      // this.selected = true
+  // data () {
+  //   return {
+  //   }
+  // },
+  // methods: {
+  //   toggleStatus: function () {
+  //     this.$emit('select', this.$el)
+  //     // this.$emit('select', this.$el)
+  //     // this.$nextTick(() => {
+  //     // this.selected = true
 
-      // })
-    }
-  },
-  computed: {
-  }
+  //     // })
+  //   }
+  // },
+  // computed: {
+  // }
 }
 </script>
 
